@@ -2,12 +2,12 @@
 
 one:
   region: MyText
-  name: MyText
+  name: Austin
   address: MyText
   phonenumber: MyText
 
 two:
   region: MyText
-  name: MyText
+  name: Alameda
   address: MyText
   phonenumber: MyText
