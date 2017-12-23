@@ -1,0 +1,31 @@
+<div class="right-align">
+  <%= button_to "Log out", destroy_announcement_user_session_path, method: :delete %>
+</div>
+<h1>All Announcements for <%= @jamatkhana.name %> Jamatkhana</h1>
+
+<br> <br>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Announcement Text</th>
+      <th>Edit Announcement</th>
+      <th>Delete Announcement</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @announcements.each do |a| %>
+      <tr>
+        <td><%= a.title %></td>
+        <td><%= a.body %></td>
+        <td><%= link_to "Edit", edit_announcement_path(a.id) %></td>
+        <td><%= link_to "Delete", announcement_path(a.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="actions form-group-center">
+  <%= button_to "Add New Announcement", new_announcement_path, method: :get %>
+</div>

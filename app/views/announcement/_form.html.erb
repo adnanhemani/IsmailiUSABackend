@@ -1,0 +1,19 @@
+<% if announcement.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(announcement.errors.count, "error") %>, Form is invalid:</h2>
+        <ul>
+        <% announcement.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<div class="field form-group">
+    <%= f.label :title, class: "col-lg-2 control-label" %> <br>
+    <%= f.text_field :title, class: "form-control" %> <br>
+    <%= f.label :body, class: "col-lg-2 control-label" %> <br>
+    <%= f.text_area :body, class: "form-control" %> <br>
+    <%= f.label "Is Event?", class: "col-lg-2 control-label" %>
+    <%= f.check_box :is_event, class: "custom-checkbox" %>
+</div>

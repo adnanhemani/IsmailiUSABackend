@@ -1,0 +1,13 @@
+<h1>Edit Announcement</h1>
+
+<div class='container'>
+<%= form_for @announcement, :url => announcement_path(@announcement.id), :method => :put, class: "form-horizontal" do |f| %>
+    <fieldset>
+        <%= render 'announcement/form', {:f => f, :announcement => @announcement} %>
+        <div class="actions form-group-center">
+            <a href="/" class="btn btn-default">Cancel</a>
+            <%= f.submit "Update Announcement", class: "btn btn-primary" %>
+        </div>
+    </fieldset>
+<% end %>
+</div>

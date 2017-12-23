@@ -1,0 +1,109 @@
+{
+  "MiniTest": {
+    "coverage": {
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/models/announcement_user.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/models/jamatkhana.rb": [
+        1,
+        null
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/models/announcement.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/controllers/application_controller.rb": [
+        0,
+        null,
+        null,
+        0,
+        0
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/controllers/cms_controller.rb": [
+        0,
+        null,
+        0
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/controllers/announcement_controller.rb": [
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/helpers/announcement_helper.rb": [
+        0,
+        0
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/helpers/cms_helper.rb": [
+        0,
+        0
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/helpers/application_helper.rb": [
+        0,
+        0
+      ]
+    },
+    "timestamp": 1514020655
+  }
+}

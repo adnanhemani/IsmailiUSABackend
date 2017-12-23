@@ -1,0 +1,12 @@
+<h1>Insert More Announcements?</h1>
+
+<div class="form-group-center">
+    <p>Your announcement has been saved. Would you like to enter more announcements?</p> <br>
+    <fieldset>
+        <div class="actions form-group-center">
+            <%= link_to "Go to All Announcements", announcement_index_path, method: :get %>
+            <span class="navigationSpace"/>
+            <%= link_to "Add More Announcements", new_announcement_path, method: :get %>
+        </div>
+    </fieldset>
+</div>
