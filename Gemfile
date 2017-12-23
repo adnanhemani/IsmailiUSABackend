@@ -37,6 +37,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec'
   gem 'cucumber'
+  gem 'codeclimate-test-reporter', '0.6.0', require: nil
 end
 
 group :development do
