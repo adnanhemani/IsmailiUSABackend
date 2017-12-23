@@ -197,15 +197,109 @@
         0,
         0
       ],
-      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/helpers/cms_helper.rb": [
-        0,
-        0
-      ],
       "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/helpers/application_helper.rb": [
         0,
         0
       ]
     },
-    "timestamp": 1514023588
+    "timestamp": 1514026045
+  },
+  "Cucumber Features": {
+    "coverage": {
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/models/announcement_user.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/models/jamatkhana.rb": [
+        1,
+        null
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/controllers/announcement_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/helpers/announcement_helper.rb": [
+        1,
+        null
+      ],
+      "/home/ahemani1/Development/IsmailiUSA/IsmailiUSABackend/app/models/announcement.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1514026042
   }
 }

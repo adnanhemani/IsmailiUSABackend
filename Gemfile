@@ -38,6 +38,10 @@ group :development, :test do
   gem 'rspec'
   gem 'cucumber'
   gem 'codeclimate-test-reporter', '0.6.0', require: nil
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels' # basic imperative step defs
+  gem 'database_cleaner', '1.4.1' # required by Cucumber
+  gem 'capybara-screenshot'
 end
 
 group :development do
