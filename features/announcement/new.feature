@@ -12,3 +12,22 @@ Feature: Announcement User creates new announcement
         When I fill in "Body" with "Sample Body"
         And I press "Add Announcement"
         Then I should see "Insert More Announcements?"
+
+    Scenario: Announcement User unsuccessfully tries to add an announcement
+        When I fill in "Body" with "Sample Body"
+        And I press "Add Announcement"
+        And I should see "Form is invalid"
+
+    Scenario: Announcement User uses fast insert to add multiple announcements
+        When I fill in "announcement_title" with "Sample Title"
+        When I fill in "Body" with "Sample Body"
+        And I press "Add Announcement"
+        Then I should see "Insert More Announcements?"
+        When I follow "Add More Announcements"
+        When I fill in "announcement_title" with "Sample Title2"
+        When I fill in "Body" with "Sample Body2"
+        And I press "Add Announcement"
+        Then I should see "Insert More Announcements?"
+        When I follow "Go to All Announcements"
+        Then I should see "Sample Title"
+        Then I should see "Sample Title2"
