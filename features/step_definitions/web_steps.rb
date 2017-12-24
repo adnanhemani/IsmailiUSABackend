@@ -257,3 +257,15 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+Then /^I should see "([^"]*)" in an input box$/ do |value|
+  expect(page).to have_xpath("//input[@value='" + value + "']")
+end
+
+Then /^I should not see "([^"]*)" in an input box$/ do |value|
+  expect(page).not_to have_xpath("//input[@value='" + value + "']")
+end
+
+When /^I follow the url "([^"]*)"$/ do |url|
+  visit url
+end
