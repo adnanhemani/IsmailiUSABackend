@@ -34,3 +34,23 @@ end
 When /^I click edit on announcement "([^"]*)"$/ do |a_title|
   find(:xpath, "//tr[td[contains(., '" + a_title + "')]]/td/a", :text => 'Edit').click
 end
+
+Given /^I have an announcement with title "([^"]*)" and event "([^"]*)"$/ do |title, event|
+    @announcement = Announcement.new({:title => title, :body => "filler"})
+    @event = Event.new({:title => event, :location=> "Sample Location", :start => Time.now, :end => Time.now, :details => "google.com"})
+    @event.save!
+    jk = Jamatkhana.find_by_name("Austin")
+    @announcement.jamatkhana = jk
+    @announcement.event_id = @event.id
+    @announcement.save!
+end
+
+Then /^"([^"]*)" should be a saved event$/ do |event_name|
+  events = Event.where(title: event_name)
+  expect(events.count).to be > 0
+end
+
+Then /^"([^"]*)" should not be a saved event$/ do |event_name|
+  events = Event.where(title: event_name)
+  expect(events.count).to be == 0
+end

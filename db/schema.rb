@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222041822) do
+ActiveRecord::Schema.define(version: 20171225233222) do
 
   create_table "announcement_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -40,9 +40,20 @@ ActiveRecord::Schema.define(version: 20171222041822) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "jamatkhana_id"
+    t.integer  "event_id"
   end
 
   add_index "announcements", ["jamatkhana_id"], name: "index_announcements_on_jamatkhana_id"
+
+  create_table "events", force: :cascade do |t|
+    t.text     "title"
+    t.text     "location"
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "details"
+  end
 
   create_table "jamatkhanas", force: :cascade do |t|
     t.text     "region"

@@ -30,3 +30,17 @@ input[type="checkbox"] {
 span.navigationSpace {
     padding-left: 100px;
 }
+
+.form-control-dropdown {
+    height:45px;
+    @extend .form-control;
+}
+
+.form-group-hidden {
+  display:none;
+  @extend .form-group;
+}
+
+.hidden {
+  display:none;
+}

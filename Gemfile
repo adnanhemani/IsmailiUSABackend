@@ -42,6 +42,8 @@ group :development, :test do
   gem 'cucumber-rails-training-wheels' # basic imperative step defs
   gem 'database_cleaner', '1.4.1' # required by Cucumber
   gem 'capybara-screenshot'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 group :development do

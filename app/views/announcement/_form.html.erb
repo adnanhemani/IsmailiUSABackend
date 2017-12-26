@@ -1,8 +1,18 @@
 <% if announcement.errors.any? %>
     <div id="error_explanation">
-        <h2><%= pluralize(announcement.errors.count, "error") %>, Form is invalid:</h2>
+        <h2><%= pluralize(announcement.errors.count, "error") %>, Announcement Form is invalid:</h2>
         <ul>
         <% announcement.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+<% if @event_inst.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(@event_inst.errors.count, "error") %>, Event Form is invalid:</h2>
+        <ul>
+        <% @event_inst.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
         <% end %>
         </ul>
@@ -14,6 +24,30 @@
     <%= f.text_field :title, class: "form-control" %> <br>
     <%= f.label :body, class: "col-lg-2 control-label" %> <br>
     <%= f.text_area :body, class: "form-control" %> <br>
-    <%= f.label "Is Event?", class: "col-lg-2 control-label" %>
-    <%= f.check_box :is_event, class: "custom-checkbox" %>
+    <%= f.label :is_event, "Is Event?", class: "col-lg-2 control-label" %>
+    <%= f.check_box :is_event, {class: "custom-checkbox", onClick: "show_event_form()"} %>
+</div>
+
+<div id="event_form" class="field form-group-hidden">
+    <%= fields_for :event, @event_inst do |e| %>
+        <%= e.label "Event Title", class: "col-lg-2 control-label" %> <br>
+        <%= e.text_field :title, class: "form-control" %> <br>
+        <%= e.label "Location", class: "col-lg-2 control-label" %> <br>
+        <%= e.text_field :location, class: "form-control" %> <br>
+        <%= e.label "Start Date and Time", class: "col-lg-2 control-label" %> 
+        <%= e.datetime_select :start, class: "form-control" %> <br> <br>
+        <%= e.label "End Date and Time", class: "col-lg-2 control-label" %> 
+        <%= e.datetime_select :end, class: "form-control" %> <br> <br>
+        <%= e.label "Registration Method", class: "col-lg-2 control-label" %> <br>
+        <%= select_tag "registration", "<option>N/A</option><option>URL</option><option>Person or Location</option>".html_safe, {class: "form-control-dropdown", onChange: "show_registration_form()"} %> <br>
+
+        <div id="registration_options_url" class="hidden">
+            <%= e.label :url, "URL", class: "col-lg-2 control-label" %> <br>
+            <%= e.text_field :details, class: "form-control" %> <br>
+        </div>
+        <div id="registration_options_person_location" class="hidden">
+            <%= e.label :person_or_location, "Person or Location", class: "col-lg-2 control-label" %> <br>
+            <%= e.text_field :details, class: "form-control" %> <br>
+        </div>
+    <% end %>
 </div>

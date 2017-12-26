@@ -58,6 +58,7 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
+  # puts page.body
   fill_in(field, :with => value)
 end
 
@@ -268,4 +269,16 @@ end
 
 When /^I follow the url "([^"]*)"$/ do |url|
   visit url
+end
+
+Given /^my testing driver looks at hidden elements$/ do
+  Capybara.ignore_hidden_elements = true
+end
+
+Then /^I should change my testing driver back$/ do
+  Capybara.ignore_hidden_elements = false
+end
+
+When /^(?:|I )fill in the first "([^"]*)" with "([^"]*)"$/ do |field, value|
+  fill_in(field, :with => value, :match => :first)
 end
