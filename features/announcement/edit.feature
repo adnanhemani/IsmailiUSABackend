@@ -9,7 +9,7 @@ Feature: Announcement User wants to change an announcement
         Given I have an announcement with title "Title2" and body "Body2"
         Given I am on the announcement_index page
 
-    Scenario: Announcement User successfully edits announcement
+    Scenario: Announcement User successfully edits announcement without Event
         Then I should see "Title1"
         When I click edit on announcement "Title1"
         Then I should see "Title1" in an input box
@@ -30,7 +30,7 @@ Feature: Announcement User wants to change an announcement
         When I press "Update Announcement"
         Then I should see "Form is invalid"
     
-    Scenario: Announcement User tries to access an announcement that's not from their jamatkhana
+    Scenario: Announcement User tries to access an announcement which is not from their jamatkhana
         Given I am a new user with email "1234@gmail.com" and jamatkhana "New York"
         When I press "Log out"
         And I log in with the email "1234@gmail.com"

@@ -7,7 +7,7 @@ Feature: Announcement User creates new announcement
         Given I am a new, authenticated user
         Given I am on the new_announcement page
 
-    Scenario: Announcement User successfully adds an announcement
+    Scenario: Announcement User successfully adds an announcement without Event
         When I fill in "announcement_title" with "Sample Title"
         When I fill in "Body" with "Sample Body"
         And I press "Add Announcement"
@@ -18,7 +18,7 @@ Feature: Announcement User creates new announcement
         And I press "Add Announcement"
         And I should see "Form is invalid"
 
-    Scenario: Announcement User uses fast insert to add multiple announcements
+    Scenario: Announcement User uses fast insert to add multiple announcements without Event
         When I fill in "announcement_title" with "Sample Title"
         When I fill in "Body" with "Sample Body"
         And I press "Add Announcement"
