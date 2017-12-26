@@ -66,9 +66,7 @@ class AnnouncementController < ApplicationController
         if params[:announcement][:is_event] == '1'
             save_result = save_event(@event_inst, @announcement, "edit")
         else
-            if @event_inst
-                @event_inst.destroy!
-            end
+            @event_inst.destroy!
         end
 
         if not save_result
