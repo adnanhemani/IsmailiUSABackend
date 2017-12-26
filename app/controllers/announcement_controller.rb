@@ -32,15 +32,17 @@ class AnnouncementController < ApplicationController
 
     def create
         @announcement = Announcement.new(user_params)
+        save_result = true
         if params[:announcement][:is_event] == '1'
             #Create assoc event
             @event_inst = Event.new(event_params)
-
-            if not save_event(@event_inst, @announcement, "new")
-                return render "new", :notice => "Some error occurred in trying to save your event"
-            end
+            save_result = save_event(@event_inst, @announcement, "new")
         else
             @event_inst = Event.new
+        end
+
+        if not save_result
+            return render "new", :notice => "Some error occurred in trying to save your event"
         end
 
         @announcement.jamatkhana = current_announcement_user.jamatkhana
@@ -54,6 +56,7 @@ class AnnouncementController < ApplicationController
 
     def update
         @announcement = Announcement.find(params[:id])
+        save_result = true
         if @announcement.event_id
             @event_inst = Event.find(@announcement.event_id)
         else
@@ -61,14 +64,17 @@ class AnnouncementController < ApplicationController
         end
         
         if params[:announcement][:is_event] == '1'
-            if not save_event(@event_inst, @announcement, "edit")
-                return render "edit", :notice => "Some error occurred in trying to save your event"
-            end
+            save_result = save_event(@event_inst, @announcement, "edit")
         else
             if @event_inst
                 @event_inst.destroy!
             end
         end
+
+        if not save_result
+            return render "edit", :notice => "Some error occurred in trying to save your event"
+        end
+
         if @announcement.update_attributes(user_params)
             redirect_to announcement_index_path
         else
