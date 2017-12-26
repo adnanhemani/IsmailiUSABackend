@@ -32,24 +32,20 @@ class AnnouncementController < ApplicationController
 
     def create
         @announcement = Announcement.new(user_params)
+        save_result = true
         if params[:announcement][:is_event] == '1'
             #Create assoc event
             @event_inst = Event.new(event_params)
-
-            if @event_inst.save
-                @announcement.event_id = @event_inst.id
-            else
-                return render "new", :notice => "Some error occurred in trying to save your event"
-            end
+            save_result = save_event(@event_inst, @announcement, "new")
         else
             @event_inst = Event.new
         end
 
-        jk = current_announcement_user.jamatkhana
-        @announcement.jamatkhana = jk
+        if not save_result
+            return render "new", :notice => "Some error occurred in trying to save your event"
+        end
 
-        #puts params
-
+        @announcement.jamatkhana = current_announcement_user.jamatkhana
 
         if @announcement.save
             render "fast_insert"
@@ -60,6 +56,7 @@ class AnnouncementController < ApplicationController
 
     def update
         @announcement = Announcement.find(params[:id])
+        save_result = true
         if @announcement.event_id
             @event_inst = Event.find(@announcement.event_id)
         else
@@ -67,17 +64,15 @@ class AnnouncementController < ApplicationController
         end
         
         if params[:announcement][:is_event] == '1'
-            
-            if @event_inst.update_attributes(event_params)
-                @announcement.event_id = @event_inst.id
-            else
-                return render "new", :notice => "Some error occurred in trying to save your event"
-            end
+            save_result = save_event(@event_inst, @announcement, "edit")
         else
-            if @event_inst
-                @event_inst.destroy!
-            end
+            @event_inst.destroy!
         end
+
+        if not save_result
+            return render "edit", :notice => "Some error occurred in trying to save your event"
+        end
+
         if @announcement.update_attributes(user_params)
             redirect_to announcement_index_path
         else
@@ -92,5 +87,20 @@ class AnnouncementController < ApplicationController
 
     def event_params
         params.require(:event).permit(:title, :location, :start, :end)
+    end
+
+    def save_event(event, announcement, new_edit)
+        if new_edit == "new"
+            save_result = event.save
+        else
+            save_result = event.update_attributes(event_params)
+        end
+
+        if save_result
+            announcement.event_id = event.id
+            return true
+        else
+            return false
+        end
     end
 end
