@@ -36,20 +36,14 @@ class AnnouncementController < ApplicationController
             #Create assoc event
             @event_inst = Event.new(event_params)
 
-            if @event_inst.save
-                @announcement.event_id = @event_inst.id
-            else
+            if not save_event(@event_inst, @announcement, "new")
                 return render "new", :notice => "Some error occurred in trying to save your event"
             end
         else
             @event_inst = Event.new
         end
 
-        jk = current_announcement_user.jamatkhana
-        @announcement.jamatkhana = jk
-
-        #puts params
-
+        @announcement.jamatkhana = current_announcement_user.jamatkhana
 
         if @announcement.save
             render "fast_insert"
@@ -67,11 +61,8 @@ class AnnouncementController < ApplicationController
         end
         
         if params[:announcement][:is_event] == '1'
-            
-            if @event_inst.update_attributes(event_params)
-                @announcement.event_id = @event_inst.id
-            else
-                return render "new", :notice => "Some error occurred in trying to save your event"
+            if not save_event(@event_inst, @announcement, "edit")
+                return render "edit", :notice => "Some error occurred in trying to save your event"
             end
         else
             if @event_inst
@@ -92,5 +83,20 @@ class AnnouncementController < ApplicationController
 
     def event_params
         params.require(:event).permit(:title, :location, :start, :end)
+    end
+
+    def save_event(event, announcement, new_edit)
+        if new_edit == "new"
+            save_result = event.save
+        else
+            save_result = event.update_attributes(event_params)
+        end
+
+        if save_result
+            announcement.event_id = event.id
+            return true
+        else
+            return false
+        end
     end
 end
